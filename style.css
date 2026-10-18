@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3436;
+    background-color: #f1f3f6;
+}
+
+/* ===== Tiêu đề trang ===== */
+.page-header {
+    text-align: center;
+    padding: 50px 20px;
+    color: white;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.page-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    opacity: 0.85;
+}
+
+/* ===== Gallery: mặc định > 700px => 4 ảnh một hàng ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.item {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Khung ảnh: giữ tỉ lệ 4:3, ảnh phóng nhẹ khi rê chuột */
+.item a {
+    display: block;
+    overflow: hidden;
+    background-color: #dfe4ea; /* nền chờ khi ảnh chưa tải xong */
+}
+
+.item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.item:hover img {
+    transform: scale(1.08);
+}
+
+.item figcaption {
+    padding: 14px 16px 18px;
+    text-align: center;
+}
+
+.item figcaption h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+}
+
+.item figcaption p {
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+.note {
+    text-align: center;
+    padding: 0 20px 40px;
+    color: #636e72;
+    font-size: 0.95rem;
+}
+
+/* ===== Nhỏ hơn 700px => 2 ảnh một hàng ===== */
+@media (max-width: 700px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ===== Nhỏ hơn 500px => 1 ảnh một hàng ===== */
+@media (max-width: 500px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        padding: 35px 15px;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+}
